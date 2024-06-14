@@ -406,3 +406,20 @@ cli$ ipa-client-install -d --mkhomedir --enable-dns-updates
 # === BR-SRV ===
 cli$ dnf install ipa-client
 cli$ ipa-client-install -d --mkhomedir --enable-dns-updates
+"Continue to configure the system with these values? [no]:"
+"User authorized to enroll computers: admin"
+Copy
+SMB
+Реализуйте файловый SMB или NFS (выбор обоснуйте) сервер на базе сервера HQ-SRV. Будем работать с SMB, так как там проше разграничить пользователей
+a. Общие папки:
+ i. Branch_Files - для пользователя Branch admin
+ ii. Network - для пользователя Network
+ iii. Admin_Files - для пользователя Admin
+Сконфигурируйте веб-сервер LMS Apache на сервере BR-SRV:
+a. На главной странице должен отражаться номер места
+b. Используйте базу днных MariaDB
+c. Создайте пользователей в соответствии с таблицей, пароли у всех пользователей "P@ssw0rd"
+Запустите сервис MediaWiki используя docker на сервере HQ-SRV
+a. Установите Docker и Docker Compose
+hq-srv$ dnf install docker-compose
+
